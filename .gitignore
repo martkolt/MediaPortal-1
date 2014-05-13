@@ -29,3 +29,4 @@ Thumbs.db
 Packages
 *.DotSettings
 /Build/NuGet.exe
+*.exe

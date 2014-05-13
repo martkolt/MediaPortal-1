@@ -536,12 +536,7 @@ namespace MediaPortal.ProcessPlugins.MiniDisplayPlugin.Drivers
             MediaTypes newMediaTypes = MediaTypes.None;
 
             _activeWindowInfo.ActiveWindow = GUIWindowManager.ActiveWindow;
-            if (_activeWindowInfo.IsWeather)
-            {
-                newMediaTypes |= MediaTypes.News_Weather;
-                Log.Info("(IDisplay) ImonLcd.SetMediaTypeIcons(): in weather plugin");
-            }
-
+            
             if (g_Player.Player != null && g_Player.Player.Playing)
             {
                 if (g_Player.IsCDA)
@@ -797,7 +792,6 @@ namespace MediaPortal.ProcessPlugins.MiniDisplayPlugin.Drivers
 
         private class ActiveWindowInfo
         {
-            const int Weather = (int)GUIWindow.Window.WINDOW_WEATHER;
             readonly int[] MyNetflix = { 10099 };
             readonly int[] MyOnlineVideos = { 4755, 4757, 4758, 4759 };
             readonly int[] MyTrailers = { 5900 };
@@ -805,12 +799,6 @@ namespace MediaPortal.ProcessPlugins.MiniDisplayPlugin.Drivers
             readonly List<int> OnlineStreamingPluginWindows;
 
             public int ActiveWindow { get; set; }
-
-            public bool IsWeather
-            {
-                get { return ActiveWindow == Weather; }
-            }
-
             public bool IsWebCasting
             {
                 get { return OnlineStreamingPluginWindows.Contains(ActiveWindow); }
